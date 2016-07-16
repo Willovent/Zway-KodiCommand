@@ -7,5 +7,7 @@
     "home": "Home",
     "play": "Play",
     "volumeup": "Volume Up",
-    "volumedown": "Volume Down"
+    "volumedown": "Volume Down",
+    "username": "Username",
+    "password": "Password"
 }

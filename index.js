@@ -12,7 +12,7 @@ Description:
 function KodiCommand(id, controller) {
     // Call superconstructor first (AutomationModule)
     KodiCommand.super_.call(this, id, controller);
-
+    this.auth = false;
     this.vDev = undefined;
 }
 
@@ -24,6 +24,9 @@ KodiCommand.prototype.init = function (config) {
     KodiCommand.super_.prototype.init.call(this, config);
 
     var self = this;
+    if (config.username && config.password) {
+        self.auth = 'Basic ' + btoa(self.config.username + ':' + self.config.password);
+    }
 
     // Create vdev
     self.vDev = this.controller.devices.create({
@@ -66,8 +69,8 @@ KodiCommand.prototype.executeCommand = function () {
     switch (self.config.command) {
         case 'home': data = { method: 'Input.Home' }; break;
         case 'play': data = { method: 'Player.PlayPause', params: [1, 'toggle'] }; break;
-        case 'volumeup': data = { method: 'Input.Action', params: { 'volumeup': '10' } }; break;
-        case 'volumedown': data = { method: 'Input.Action', params: { 'volumedown': '10' } }; break;
+        case 'volumeup': data = { method: 'Input.ExecuteAction', params: { 'action': 'volumeup' } }; break;
+        case 'volumedown': data = { method: 'Input.ExecuteAction', params: { 'action': 'volumedown' } }; break;
     };
     self.sendToKodi(data);
 };
@@ -76,14 +79,20 @@ KodiCommand.prototype.sendToKodi = function (data) {
     var self = this;
     data.jsonrpc = '2.0';
     data.id = 1;
-    data = JSON.stringify(data)
+    data = JSON.stringify(data);
+    var headers = {
+        'Content-Type': 'application/json',
+        'Content-Length': data.length
+    };
+
+    if (self.auth) {
+        headers.Authorization = auth;
+    }
+
     http.request({
         url: 'http://' + self.config.host + ':' + self.config.port + '/jsonrpc',
         method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'Content-Length': data.length
-        },
+        headers: headers,
         data: data,
         async: true,
         success: function () { },

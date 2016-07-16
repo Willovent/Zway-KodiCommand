@@ -32,8 +32,16 @@
                 "order": 1
             },
             "port": {
-                "label": "__host__",
+                "label": "__port__",
                 "order": 2
+            },
+            "username": {
+                "label": "__username__",
+                "order": 4
+            },
+            "password": {
+                "label": "__password__",
+                "order": 5
             }
         }
     },
@@ -51,6 +59,14 @@
                 "required": true,
                 "type": "number"
             },
+            "username": {
+                "required": false,
+                "type": "string"
+            },
+            "password": {
+                "required": false,
+                "type": "string"
+            },
             "command": {
                 "enum": [
                     "home",
@@ -64,6 +80,6 @@
         "required": true,
         "type": "object"
     },
-    "singleton": true,
+    "singleton": false,
     "version": "1.00"
 }
