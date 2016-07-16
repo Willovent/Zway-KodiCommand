@@ -1,0 +1,69 @@
+{
+    "author": "William Klein",
+    "category": "device_enhancements",
+    "defaults": {
+        "description": "__m_descr__",
+        "port": 80,
+        "title": "__m_title__",
+        "host": "127.0.0.1",
+        "command": "home"
+    },
+    "dependencies": [
+        "BaseModule"
+    ],
+    "homepage": "https://github.com/willovent/Zway-KodiCommand",
+    "icon": "icon.png",
+    "maturity": "stable",
+    "moduleName": "KodiCommand",
+    "options": {
+        "fields": {
+            "command": {
+                "label": "__command__",
+                "optionLabels": [
+                    "__home__",
+                    "__play__",
+                    "__volumeup__",
+                    "__volumedown__"
+                ],
+                "order": 3
+            },
+            "host": {
+                "label": "__host__",
+                "order": 1
+            },
+            "port": {
+                "label": "__host__",
+                "order": 2
+            }
+        }
+    },
+    "repository": {
+        "source": "https://github.com/willovent/Zway-KodiCommand",
+        "type": "git"
+    },
+    "schema": {
+        "properties": {
+            "host": {
+                "required": true,
+                "type": "string"
+            },
+            "port": {
+                "required": true,
+                "type": "number"
+            },
+            "command": {
+                "enum": [
+                    "home",
+                    "play",
+                    "volumeup",
+                    "volumedown"
+                ],
+                "required": true
+            }
+        },
+        "required": true,
+        "type": "object"
+    },
+    "singleton": true,
+    "version": "1.00"
+}

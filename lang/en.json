@@ -1,0 +1,11 @@
+{
+    "m_descr": "This module creates a toggleButton used to send command on kodi. <br>Check <a href=https://github.com/willovent/Zway-Kodi/blob/master/README.md>github.com/willovent/Zway-Kodi</a> for detailed documentation.",
+    "m_title": "Kodi Command",
+    "host": "Kodi host",
+    "command": "Kodi command",
+    "port": "Kodi port",
+    "home": "Home",
+    "play": "Play",
+    "volumeup": "Volume Up",
+    "volumedown": "Volume Down"
+}
