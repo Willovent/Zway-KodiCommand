@@ -26,10 +26,10 @@ A switch toggle device will be created.
 
 # Installation
 
-The prefered way of installing this module is via the "Zwave.me App Store"
-available in 2.2.0 and higher. For stable module releases no access token is 
-required. If you want to test the latest pre-releases use 'k1_beta' as 
-app store access token.
+// The prefered way of installing this module is via the "Zwave.me App Store"
+// available in 2.2.0 and higher. For stable module releases no access token is 
+//required. If you want to test the latest pre-releases use 'k1_beta' as 
+//app store access token.
 
 For developers and users of older Zway versions installation via git is 
 recommended.
